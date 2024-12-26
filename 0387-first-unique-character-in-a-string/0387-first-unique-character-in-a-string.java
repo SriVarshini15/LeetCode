@@ -9,9 +9,9 @@ class Solution {
                 }
             }
             if (isUnique) {
-                return i; // Return the index of the first unique character
+                return i;
             }
         }
-        return -1; // Return -1 if no unique character is found
+        return -1; 
     }
 }
