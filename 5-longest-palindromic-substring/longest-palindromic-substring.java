@@ -3,7 +3,7 @@ class Solution {
         if (s == null || s.length() == 0) return "";
 
         StringBuilder t = new StringBuilder();
-        t.append("^");
+        t.append("#");
         for (int i = 0; i < s.length(); i++) {
             t.append("#").append(s.charAt(i));
         }
