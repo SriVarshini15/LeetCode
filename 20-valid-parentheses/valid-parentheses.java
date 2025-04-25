@@ -1,41 +1,33 @@
 class Solution {
     public boolean isValid(String s) {
-        Stack<Character> container=new Stack<>();
-        boolean result=true;
+        Stack<Character> stack=new Stack<>();
         if(s.length()%2!=0){
-            result=false;
-        }else{
-            loop:for(int i=0;i<s.length();i++){
-                if(s.charAt(i)=='[' || s.charAt(i)=='{' ||s.charAt(i)=='(' ){
-                    container.push(s.charAt(i));
+            return false;
+        }
+        for(int i=0;i<s.length();i++){
+            char cur=s.charAt(i);
+            if(cur=='(' ||cur=='[' ||cur=='{'){
+                stack.push(cur);
+            }else{
+                if(stack.isEmpty()){
+                    return false;
                 }
-                else{
-                    if(container.isEmpty()){
-                        result=false;
-                        break loop;
-                    }
-                    if(!comparison(container.pop(),s.charAt(i))){
-                        result=false;
-                        break loop;
-                    }
+                if(!matching(stack.pop(),cur)){
+                    return false;
                 }
-            }
-            if (!container.isEmpty()) {
-                result = false;
             }
         }
-        return result;
-    }
+        if(!stack.isEmpty()){
+            return false;
+        }
+        return true;
 
-        
-    public static boolean comparison(char str1,char str2){
-        if(str1=='(' && str2==')'){
-            return true;
-        }if(str1=='[' && str2==']'){
-            return true;
-        }if(str1=='{' && str2=='}'){
-            return true;
-        }
+    }
+    public static boolean matching(char c1,char c2){
+        if(c1=='(' && c2==')') return true;
+        if(c1=='[' && c2==']') return true;
+        if(c1=='{' && c2=='}') return true;
+
         return false;
     }
 }
