@@ -10,7 +10,8 @@ class Solution(object):
                 return digits
             
             digits[i-1]=0
-        newlist=[0]*(len(digits)+1)
-        newlist[0]=1
-        return newlist
+
+        """newlist=[0]*(len(digits)+1)
+        newlist[0]=1 """
+        return [1]+ digits
         
