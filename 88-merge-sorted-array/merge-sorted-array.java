@@ -11,9 +11,7 @@ class Solution {
                 nums1[ind--]=nums2[j--];
             }
         }
-        while(i>=0){
-            nums1[ind--]=nums1[i--];
-        }
+
         while(j>=0){
             nums1[ind--]=nums2[j--];
         }
