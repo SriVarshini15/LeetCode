@@ -84,7 +84,7 @@ class Solution {
             }
         }
 
-        return 0.0; // fallback return; won't happen for valid sorted input
+        return 0.0; 
     }
 }
 
