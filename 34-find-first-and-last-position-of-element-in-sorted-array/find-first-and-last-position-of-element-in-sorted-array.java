@@ -1,43 +1,34 @@
 class Solution {
     public int[] searchRange(int[] nums, int target) {
-        int[] ind = new int[2];
-        int res = search(nums, target);
-
-        if (res == -1) {
-            ind[0] = -1;
-            ind[1] = -1;
-            return ind;
+        int res=search(nums,target);
+        int arr[]={-1,-1};
+        if(res==-1){
+            return arr;
         }
-
-        int left = res;
-        while (left - 1 >= 0 && nums[left - 1] == target) {
+        int left=res,right=res;
+        while(left>=0 && nums[left]==target){
+            arr[0]=left;
             left--;
         }
-
-        int right = res;
-        while (right + 1 < nums.length && nums[right + 1] == target) {
+        while(right<=nums.length-1 && nums[right]==target){
+            arr[1]=right;
             right++;
         }
-
-        ind[0] = left;
-        ind[1] = right;
-        return ind;
+        return arr;
     }
-
-    public static int search(int nums[], int target) {
-        int left = 0, right = nums.length - 1;
-
-        while (left <= right) {
-            int mid = left + (right - left) / 2;
-            if (target == nums[mid]) {
+    public static int search(int nums[],int target){
+        int left=0;
+        int right=nums.length-1;
+        while(left<=right){
+            int mid=left+(right-left)/2;
+            if(nums[mid]==target){
                 return mid;
-            } else if (target < nums[mid]) {
-                right = mid - 1;
-            } else {
-                left = mid + 1;
+            }if(nums[mid]<target){
+                left=mid+1;
+            }else{
+                right=mid-1;
             }
         }
-
         return -1;
     }
 }
