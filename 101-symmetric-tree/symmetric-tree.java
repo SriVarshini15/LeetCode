@@ -15,6 +15,42 @@
  */
 class Solution {
     public boolean isSymmetric(TreeNode root) {
+        if(root==null){
+            return true;
+        }
+        Stack<TreeNode> stack1=new Stack<>();
+        Stack<TreeNode> stack2=new Stack<>();
+
+        TreeNode cur1=root.left;
+        TreeNode cur2=root.right;
+
+        stack1.push(root.left);
+        stack2.push(root.right);
+
+        while(!stack1.isEmpty()  && !stack2.isEmpty()){
+            cur1=stack1.pop();
+            cur2=stack2.pop();
+
+            if(cur1==null && cur2==null){
+                continue;
+            }if(cur1==null || cur2==null){
+                return false;
+            }if(cur1.val!=cur2.val){
+                return false;
+            }
+
+            stack1.push(cur1.left);
+            stack2.push(cur2.right);
+
+            stack1.push(cur1.right);
+            stack2.push(cur2.left);
+        }
+        return stack1.isEmpty() && stack2.isEmpty();
+    }
+}
+
+/* class Solution {
+    public boolean isSymmetric(TreeNode root) {
 
         if(root==null){
             return true;
@@ -48,4 +84,4 @@ class Solution {
         }
         return cur1==null && cur2==null && stack1.isEmpty() && stack2.isEmpty();
     }
-}
+} */
