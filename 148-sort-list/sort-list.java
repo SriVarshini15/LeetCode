@@ -68,3 +68,47 @@ class Solution {
         return newNodee.next;
     }
 }
+
+/*
+class Solution {
+    public ListNode sortList(ListNode head) {
+        if (head == null || head.next == null) return head;
+        ListNode slow = head;
+        ListNode fast = head;
+        while (fast != null && fast.next != null && fast.next.next != null) {
+            slow = slow.next;
+            fast = fast.next.next;
+        }
+        ListNode newhead = slow.next;
+        slow.next = null;
+        head = sortList(head);
+        newhead = sortList(newhead);
+        return merge(head, newhead);
+    }
+
+    ListNode merge(ListNode a, ListNode b) {
+        if (a == null) return b;
+        if (b == null) return a;
+        
+        ListNode dummy = new ListNode();
+        ListNode cur = dummy;
+        while (a != null && b != null) {
+            if (a.val <= b.val) {
+                cur.next = a;    
+                a = a.next;
+            } else {
+                cur.next = b;
+                b = b.next;
+            }
+            cur = cur.next;
+        }
+        
+        if (a == null) {
+            cur.next = b;
+        } else if (b == null) {
+            cur.next = a;
+        }
+        return dummy.next;
+    }
+}
+*/
