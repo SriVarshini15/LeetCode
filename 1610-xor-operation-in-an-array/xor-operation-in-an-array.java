@@ -4,10 +4,10 @@ class Solution {
         for(int i=0;i<n;i++){
             nums[i]=start+2*i;
         }
-        int res=0;
+        int result=0;
         for(int ele:nums){
-            res^=ele;
+            result^=ele;
         }
-        return res;
+        return result;
     }
 }
