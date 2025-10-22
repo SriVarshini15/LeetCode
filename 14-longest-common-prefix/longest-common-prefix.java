@@ -1,4 +1,32 @@
-import java.util.*;
+class Solution {
+    public String longestCommonPrefix(String[] strs) {
+        if(strs.length == 0) {
+            return "";
+        }
+        int l=strs[0].length();
+        int ind=-1;
+        outter:for(int i=0;i<l;i++){
+            char ch=strs[0].charAt(i);
+            for(int j=0;j<strs.length;j++){
+                if(i >= strs[j].length() || ch!=strs[j].charAt(i)){
+                    break outter;
+                }
+            }
+            ind++;
+        }
+
+        String s="";
+        for(int i=0;i<=ind;i++){
+            s+=strs[0].charAt(i);
+        }
+        
+        return s;
+    }
+}
+
+
+
+/* import java.util.*;
 
 class Solution {
     public String longestCommonPrefix(String[] strs) {
@@ -29,3 +57,4 @@ class Solution {
         return result;
     }
 }
+ */
